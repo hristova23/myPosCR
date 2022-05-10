@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{303BBE0D-0798-4B1A-B797-E909CF82A106}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C3FCF175-8FF6-43E0-B72F-0397EB8DE0AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{AC42AB44-3502-4B1C-99C9-11CDF445022C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myPosCR.Web", "Web\myPosCR.Web\myPosCR.Web.csproj", "{18907096-5130-4AA7-AB9C-A33CE3CAB8D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18907096-5130-4AA7-AB9C-A33CE3CAB8D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18907096-5130-4AA7-AB9C-A33CE3CAB8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18907096-5130-4AA7-AB9C-A33CE3CAB8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18907096-5130-4AA7-AB9C-A33CE3CAB8D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18907096-5130-4AA7-AB9C-A33CE3CAB8D8} = {AC42AB44-3502-4B1C-99C9-11CDF445022C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F482841-93EE-48DD-99A3-AB90ADCA94DE}
+	EndGlobalSection
+EndGlobal
