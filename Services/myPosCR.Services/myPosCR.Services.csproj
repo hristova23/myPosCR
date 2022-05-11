@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Implementations\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Data\MyPosCR.Data.Models\MyPosCR.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\MyPosCR.Data\MyPosCR.Data.csproj" />
     <ProjectReference Include="..\myPosCR.Services.Models\myPosCR.Services.Models.csproj" />
   </ItemGroup>
 

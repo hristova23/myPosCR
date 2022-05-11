@@ -9,10 +9,10 @@ namespace myPosCR.Services
 {
     public interface IUserService
     {
-        void Create();
-        void Get();
+        void Create(string firstName, string lastName, string email, string phoneNumber, string password, int credits);
+        void Read();
         void Update();
-        void Delete();
+        void Delete(int id);
         string HashPassword(string password);
         //List<UserListingServiceModel> SearchByEmail(string email);
     }

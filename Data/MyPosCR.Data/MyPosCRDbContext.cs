@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyPosCR.Data
 {
-    internal class MyPosCRDbContext : DbContext
+    public class MyPosCRDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
