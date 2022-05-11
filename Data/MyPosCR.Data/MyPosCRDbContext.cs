@@ -38,24 +38,6 @@ namespace MyPosCR.Data
                     .HasForeignKey(s => s.RecieverId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
-
-            //builder.Entity<Transaction>(transaction =>
-            //{
-            //    transaction
-            //        .HasKey(sr => new { sr.SenderId, sr.RecieverId });
-
-            //    transaction
-            //        .HasOne(t => t.Sender)
-            //        .WithMany(t => t.Transactions)
-            //        .HasForeignKey(b => b.SenderId)
-            //        .OnDelete(DeleteBehavior.Restrict);
-
-            //    transaction
-            //        .HasOne(t => t.Reciever)
-            //        .WithMany(t => t.Transactions)
-            //        .HasForeignKey(b => b.RecieverId)
-            //        .OnDelete(DeleteBehavior.Restrict);
-            //});
         }
     }
 }
