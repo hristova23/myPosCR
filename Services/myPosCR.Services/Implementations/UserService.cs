@@ -18,14 +18,12 @@ namespace myPosCR.Services.Implementations
             this.data = data;
         }
 
-        public void Create(string firstName, string lastName, string email, string phoneNumber, string password, int credits = 100)
+        public void Create(string email, string phoneNumber, string password, int credits = 100)
         {
             //VALIDATIONS!
 
             ApplicationUser user = new ApplicationUser
             {
-                FirstName = firstName,
-                LastName = lastName,
                 Email = email,
                 PhoneNumber = phoneNumber,
                 PasswordHash = HashPassword(password),//

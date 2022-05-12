@@ -71,16 +71,6 @@ namespace MyPosCR.Web.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "First Name")]
-            public string FirstName { get; set; }
-
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Last Name")]
-            public string LastName { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -139,12 +129,10 @@ namespace MyPosCR.Web.Areas.Identity.Pages.Account
                 //
                 //
                 var user = new ApplicationUser {
-                    FirstName = Input.FirstName, 
-                    LastName = Input.LastName,
                     Email = Input.Email,
                     PhoneNumber = Input.PhoneNumber,
                     Credits = Input.Credits,
-                    UserName = $"{Input.FirstName}_{Input.LastName}"
+                    UserName = Input.Email
                 };
 
                 //var user = CreateUser();

@@ -9,7 +9,7 @@ namespace myPosCR.Services
 {
     public interface IUserService
     {
-        void Create(string firstName, string lastName, string email, string phoneNumber, string password, int credits);
+        void Create(string email, string phoneNumber, string password, int credits);
         void Read();
         void Update();
         //void Delete(int id);

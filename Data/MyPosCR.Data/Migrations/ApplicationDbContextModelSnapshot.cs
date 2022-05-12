@@ -266,7 +266,7 @@ namespace MyPosCR.Data.Migrations
 
                     b.HasIndex("SenderId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
