@@ -1,17 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MyPosCR.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyPosCR.Data
+﻿namespace MyPosCR.Data
 {
-    public class MyPosCRDbContext : DbContext
+    using MyPosCR.Data.Models;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
@@ -23,8 +27,9 @@ namespace MyPosCR.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
 
-            builder.Entity<User>(user =>
+            builder.Entity<ApplicationUser>(user =>
             {
                 user
                     .HasMany(s => s.SendedTransactions)

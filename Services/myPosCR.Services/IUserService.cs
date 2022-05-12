@@ -12,7 +12,7 @@ namespace myPosCR.Services
         void Create(string firstName, string lastName, string email, string phoneNumber, string password, int credits);
         void Read();
         void Update();
-        void Delete(int id);
+        //void Delete(int id);
         string HashPassword(string password);
         //List<UserListingServiceModel> SearchByEmail(string email);
     }

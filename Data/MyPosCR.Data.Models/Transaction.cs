@@ -18,11 +18,11 @@ namespace MyPosCR.Data.Models
         [StringLength(1000)]
         public string Message { get; set; }
         
-        public int SenderId { get; set; }
-        public User Sender { get; set; }
+        public string SenderId { get; set; }
+        public ApplicationUser Sender { get; set; }
         
-        public int RecieverId { get; set; }
-        public User Reciever { get; set; }
+        public string RecieverId { get; set; }
+        public ApplicationUser Reciever { get; set; }
 
         [Required]
         public DateTime Date { get; set; }

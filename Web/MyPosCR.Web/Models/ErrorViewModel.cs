@@ -1,4 +1,4 @@
-namespace MyPos.Web.Models
+namespace MyPosCR.Web.Models
 {
     public class ErrorViewModel
     {

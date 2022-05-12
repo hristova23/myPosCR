@@ -11,18 +11,18 @@ namespace myPosCR.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private readonly MyPosCRDbContext data;
+        private readonly ApplicationDbContext data;
 
-        public UserService(MyPosCRDbContext data)
+        public UserService(ApplicationDbContext data)
         {
             this.data = data;
         }
 
-        public void Create(string firstName, string lastName, string email, string phoneNumber, string password, int credits)
+        public void Create(string firstName, string lastName, string email, string phoneNumber, string password, int credits = 100)
         {
             //VALIDATIONS!
 
-            User user = new User
+            ApplicationUser user = new ApplicationUser
             {
                 FirstName = firstName,
                 LastName = lastName,
@@ -34,16 +34,6 @@ namespace myPosCR.Services.Implementations
 
             this.data.Users.Add(user);
             this.data.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            this.data.Users
-                .Remove(this.data.Users
-                .Where(u => u.Id == id)
-                .FirstOrDefault());
-
-            data.SaveChanges();
         }
 
         public void Read()

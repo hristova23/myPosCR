@@ -9,11 +9,21 @@ namespace myPosCR.Services.Implementations
 {
     public class TransactionService : ITransactionService
     {
-        private readonly MyPosCRDbContext data;
+        private readonly ApplicationDbContext data;
 
-        public TransactionService(MyPosCRDbContext data)
+        public TransactionService(ApplicationDbContext data)
         {
             this.data = data;
+        }
+
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Get()
+        {
+            throw new NotImplementedException();
         }
     }
 }

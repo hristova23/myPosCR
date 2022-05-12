@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPos.Web.Models;
+using MyPosCR.Web.Models;
 using System.Diagnostics;
 
-namespace MyPos.Web.Controllers
+namespace MyPosCR.Web.Controllers
 {
     public class HomeController : Controller
     {

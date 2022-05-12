@@ -4,15 +4,20 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-MyPos.Web-B96ACF11-7F66-4080-A9B2-609E972524C7</UserSecretsId>
+    <UserSecretsId>aspnet-MyPosCR.Web-A1D173B2-B7BD-4C60-9822-241880FE3518</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\MyPosCR.Data.Models\MyPosCR.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\MyPosCR.Data\MyPosCR.Data.csproj" />
   </ItemGroup>
 
 </Project>
