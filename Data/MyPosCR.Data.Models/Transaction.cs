@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyPosCR.Data.Models
+﻿namespace MyPosCR.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Transaction
     {
         public int TransactionId { get; set; }
