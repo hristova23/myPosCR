@@ -1,24 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MyPosCR.Data;
 using MyPosCR.Web.Models;
+using MyPosCR.Web.Models.Users;
 using System.Diagnostics;
 
 namespace MyPosCR.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        private readonly ApplicationDbContext db;
+        public HomeController(ApplicationDbContext db)
         {
-            _logger = logger;
+            this.db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var viewModel = new IndexViewModel();
+            var users = this.db.Users.Select(u => new IndexUserViewModel
+            {
+                Username= u.UserName,
+                PhoneNumber= u.PhoneNumber,
+                Credits = u.Credits
+            }).ToList();
+            viewModel.Users = users;
+
+            return View(viewModel);
         }
 
-        public IActionResult Privacy()
+        [Authorize]
+        public IActionResult Dashboard()
         {
             return View();
         }
