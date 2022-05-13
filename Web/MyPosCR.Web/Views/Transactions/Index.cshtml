@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MyPosCR.Web.Models.Transactions.IndexViewModel
+@{
     ViewData["Title"] = "Transactions Dashboard";
 }
 
@@ -10,19 +11,19 @@
         <thead class="table-dark">
             <tr>
                 <th scope="col" style="width: 30%">Sender</th>
-                <th scope="col" style="width: 30%">Reciever</th>
+                <th scope="col" style="width: 30%">Receiver</th>
                 <th scope="col" style="width: 20%">Amount</th>
             </tr>
         </thead>
-        <tbody>@*
-            @foreach (var transaction in Model.Users)
+        <tbody>
+            @foreach (var transaction in Model.Transactions)
             {
-                <tr>
-                    <td>@transaction.Sender</td>
-                    <td>@transaction.Reciever</td>
+                <tr role="button" onclick="location.href = '@(Url.Action("Details", "Transactions", transaction))'">
+                    <td>@transaction.Sender.Email (@transaction.Sender.PhoneNumber)</td>
+                    <td>@transaction.Reciever.Email (@transaction.Reciever.PhoneNumber)</td>
                     <td>@transaction.Amount</td>
                 </tr>
-            }*@
+            }
         </tbody>
     </table>
 </div>
