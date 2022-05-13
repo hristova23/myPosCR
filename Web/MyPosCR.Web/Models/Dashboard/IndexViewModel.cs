@@ -1,4 +1,4 @@
-﻿namespace MyPosCR.Web.Models.Users
+﻿namespace MyPosCR.Web.Models.Dashboard
 {
     public class IndexViewModel
     {

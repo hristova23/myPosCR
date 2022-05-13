@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Transactions Dashboard";
+}
+
+<h1>Transactions</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="width: 30%">Sender</th>
+                <th scope="col" style="width: 30%">Reciever</th>
+                <th scope="col" style="width: 20%">Amount</th>
+            </tr>
+        </thead>
+        <tbody>@*
+            @foreach (var transaction in Model.Users)
+            {
+                <tr>
+                    <td>@transaction.Sender</td>
+                    <td>@transaction.Reciever</td>
+                    <td>@transaction.Amount</td>
+                </tr>
+            }*@
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,29 @@
+﻿@model MyPosCR.Web.Models.Dashboard.IndexViewModel
+@{
+    ViewData["Title"] = "Users Dashboard";
+}
+
+<h1>Users</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="width: 40%">Email</th>
+                <th scope="col" style="width: 30%">Phone Number</th>
+                <th scope="col" style="width: 30%">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Username</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.Credits</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
