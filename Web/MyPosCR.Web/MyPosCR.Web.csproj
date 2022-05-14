@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\MyPosCR.Data.Models\MyPosCR.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\MyPosCR.Data\MyPosCR.Data.csproj" />
+    <ProjectReference Include="..\..\Services\myPosCR.Services\myPosCR.Services.csproj" />
   </ItemGroup>
 
 </Project>

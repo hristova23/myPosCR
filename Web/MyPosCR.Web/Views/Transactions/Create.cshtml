@@ -1,0 +1,32 @@
+﻿@model myPosCR.Services.Models.TransactionListingServiceModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Transaction</h1>
+
+<form method="post" asp-action="Create">
+    <div class="card px-4">
+        <div>
+            <label asp-for="RecieverPhone"></label>
+            <input asp-for="RecieverPhone" class="form-control"/>
+            <span asp-validation-for="RecieverPhone" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Amount"></label>
+            <input asp-for="Amount" class="form-control"/>
+            <span asp-validation-for="Amount" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Message"></label>
+            <input asp-for="Message" class="form-control"/>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+        <hr />
+        <input type="submit" class="btn btn-primary"/>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

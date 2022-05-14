@@ -9,7 +9,6 @@
         [Required]
         public int Amount { get; set; }
 
-        [Required]
         [StringLength(1000)]
         public string Message { get; set; }
         
