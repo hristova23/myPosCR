@@ -42,16 +42,7 @@ namespace MyPosCR.Web.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Details(IndexTransactionViewModel transaction)
-        {
-            //var transaction = this.db.Transactions
-            //    .Where(t => t.TransactionId == transactionId)
-            //    .FirstOrDefault();
-            //pass it to the view
-            return View();
-        }
-
-        public IActionResult ById(int id)
+        public IActionResult Details(int id)
         {
             //TODO: read the transaction
             return View();
@@ -79,7 +70,7 @@ namespace MyPosCR.Web.Controllers
                 Date = input.Date
             });
 
-            return this.RedirectToAction(nameof(this.ById), new { id = transactionId });
+            return this.RedirectToAction(nameof(this.Details), new { id = transactionId });
         }
     }
 }

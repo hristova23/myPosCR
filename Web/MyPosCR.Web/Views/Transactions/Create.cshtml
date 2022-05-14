@@ -5,6 +5,19 @@
 
 <h1>Create Transaction</h1>
 
+<script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea.edit-with-tinymce",
+        relative_urls: false,
+        remove_script_host : false,
+        convert_urls : true,
+        plugins: [
+            "image paste table link code media fullscreen wordcount searchreplace lists"
+        ]
+    });
+</script>
+
 <form method="post" asp-action="Create">
     <div class="card px-4">
         <div>
@@ -19,7 +32,7 @@
         </div>
         <div>
             <label asp-for="Message"></label>
-            <input asp-for="Message" class="form-control"/>
+            <textarea asp-for="Message" class="form-control edit-with-tinymce"></textarea>
             <span asp-validation-for="Message" class="text-danger"></span>
         </div>
         <hr />
