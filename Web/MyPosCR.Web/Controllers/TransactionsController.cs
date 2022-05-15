@@ -9,6 +9,7 @@ using MyPosCR.Web.Models.Transactions;
 
 namespace MyPosCR.Web.Controllers
 {
+    [Authorize]
     public class TransactionsController : Controller
     {
         private readonly ITransactionsService TransactionsService;
@@ -28,7 +29,7 @@ namespace MyPosCR.Web.Controllers
         public IActionResult Index()
         {
             var viewModel = new IndexViewModel();
-            var users = this.db.Transactions.Select(t => new IndexTransactionViewModel
+            var users = this.db.Transactions.Where(t=>t.Sender.Email == User.Identity.Name || t.Reciever.Email == User.Identity.Name).Select(t => new IndexTransactionViewModel
             {
                 TransactionId = t.TransactionId,
                 Sender = t.Sender,
@@ -54,29 +55,34 @@ namespace MyPosCR.Web.Controllers
             return View(transaction);
         }
 
-        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Create(TransactionListingServiceModel input)
         {
             input.Date = DateTime.UtcNow;
             input.SenderUsername = HttpContext.User.Identity.Name;
 
-            int transactionId = await this.TransactionsService.CreateAsync(new TransactionListingServiceModel
+            if (ModelState.IsValid)
             {
-                SenderUsername = input.SenderUsername,
-                RecieverPhone = input.RecieverPhone,
-                Message = input.Message,
-                Amount = input.Amount,
-                Date = input.Date
-            });
+                int transactionId = await this.TransactionsService.CreateAsync(new TransactionListingServiceModel
+                {
+                    SenderUsername = input.SenderUsername,
+                    RecieverPhone = input.RecieverPhone,
+                    Message = input.Message,
+                    Amount = input.Amount,
+                    Date = input.Date
+                });
 
-            return this.RedirectToAction(nameof(this.Details), new { id = transactionId });
+                return this.RedirectToAction(nameof(this.Details), new { id = transactionId });
+            }
+            else
+            {
+                return View(input);
+            }
         }
     }
 }

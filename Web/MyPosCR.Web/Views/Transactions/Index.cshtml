@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Transactions</h1>
+    <h1 class="display-4 p-3">Transactions</h1>
     <table class="table">
         <thead class="table-dark">
             <tr>
@@ -16,7 +16,7 @@
         <tbody>
             @foreach (var transaction in Model.Transactions)
             {
-                <tr role="button" onclick="location.href = '@(Url.Action("Details", "Transactions", transaction))'">
+                <tr role="button" onclick="location.href = '@(Url.Action("Details", "Transactions", new { id = transaction.TransactionId }))'">
                     <td>@transaction.Sender.Email (@transaction.Sender.PhoneNumber)</td>
                     <td>@transaction.Reciever.Email (@transaction.Reciever.PhoneNumber)</td>
                     <td>@transaction.Amount</td>
@@ -24,4 +24,7 @@
             }
         </tbody>
     </table>
+    <div class="container text-end">
+        <input type="button" class="btn-success" value="Create Transaction" onclick="location.href='@Url.Action("Create", "Transactions")'" />
+    </div>
 </div>

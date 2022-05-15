@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlSanitizer" Version="7.1.488" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Data\MyPosCR.Data.Models\MyPosCR.Data.Models.csproj" />
   </ItemGroup>
 

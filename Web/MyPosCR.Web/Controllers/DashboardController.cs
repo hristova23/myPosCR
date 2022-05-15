@@ -5,7 +5,6 @@ using MyPosCR.Web.Models.Dashboard;
 
 namespace MyPosCR.Web.Controllers.Dashboard
 {
-    [Authorize]
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext db;
@@ -14,6 +13,7 @@ namespace MyPosCR.Web.Controllers.Dashboard
             this.db = db;
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             var viewModel = new IndexViewModel();

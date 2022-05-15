@@ -1,4 +1,5 @@
-﻿using MyPosCR.Data.Models;
+﻿using Ganss.XSS;
+using MyPosCR.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,7 @@ namespace myPosCR.Services.Models
         public string RecieverPhoneNumber { get; set; }
 
         public string? Message { get; set; }
+        public string SanitizedMessage => new HtmlSanitizer().Sanitize(this.Message);
 
         public int Amount { get; set; }
 
