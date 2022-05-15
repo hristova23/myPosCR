@@ -11,12 +11,12 @@ namespace MyPosCR.Web.Controllers
 {
     public class TransactionsController : Controller
     {
-        private readonly ISendService sendService;
+        private readonly ITransactionsService TransactionsService;
         private readonly ApplicationDbContext db;
 
-        public TransactionsController(ISendService sendService, ApplicationDbContext db)
+        public TransactionsController(ITransactionsService sendService, ApplicationDbContext db)
         {
-            this.sendService = sendService;
+            this.TransactionsService = sendService;
             this.db = db;
         }
 
@@ -44,8 +44,14 @@ namespace MyPosCR.Web.Controllers
 
         public IActionResult Details(int id)
         {
-            //TODO: read the transaction
-            return View();
+            var transaction = this.TransactionsService.GetById(id);
+
+            if (transaction == null)
+            {
+                return this.NotFound();
+            }
+
+            return View(transaction);
         }
 
         [Authorize]
@@ -61,7 +67,7 @@ namespace MyPosCR.Web.Controllers
             input.Date = DateTime.UtcNow;
             input.SenderUsername = HttpContext.User.Identity.Name;
 
-            int transactionId = await this.sendService.CreateAsync(new TransactionListingServiceModel
+            int transactionId = await this.TransactionsService.CreateAsync(new TransactionListingServiceModel
             {
                 SenderUsername = input.SenderUsername,
                 RecieverPhone = input.RecieverPhone,

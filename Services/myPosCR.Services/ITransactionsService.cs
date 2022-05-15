@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace myPosCR.Services
 {
-    public interface ISendService
+    public interface ITransactionsService
     {
         Task<int> CreateAsync(TransactionListingServiceModel transaction);
+        NewTransactionServiceListingModel GetById(int id);
     }
 }

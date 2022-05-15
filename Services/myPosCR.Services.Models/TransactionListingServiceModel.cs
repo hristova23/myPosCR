@@ -20,7 +20,6 @@ namespace myPosCR.Services.Models
         [Required]
         public int Amount { get; set; }
 
-        [MaxLength(10)]
         public string? Message { get; set; }
 
         public DateTime Date { get; set; }

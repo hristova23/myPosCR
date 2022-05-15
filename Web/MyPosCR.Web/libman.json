@@ -3,6 +3,36 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
+      "library": "@fortawesome/fontawesome-free@5.15.4",
+      "destination": "wwwroot/lib/fontawesome/",
+      "files": [
+        "webfonts/fa-brands-400.eot",
+        "webfonts/fa-brands-400.svg",
+        "webfonts/fa-brands-400.ttf",
+        "webfonts/fa-brands-400.woff",
+        "webfonts/fa-brands-400.woff2",
+        "webfonts/fa-regular-400.eot",
+        "webfonts/fa-regular-400.svg",
+        "webfonts/fa-regular-400.ttf",
+        "webfonts/fa-regular-400.woff",
+        "webfonts/fa-regular-400.woff2",
+        "webfonts/fa-solid-900.eot",
+        "webfonts/fa-solid-900.svg",
+        "webfonts/fa-solid-900.ttf",
+        "webfonts/fa-solid-900.woff",
+        "webfonts/fa-solid-900.woff2",
+        "css/all.css",
+        "css/all.min.css"
+      ]
+    },
+    {
+      "library": "favico.js@0.3.10",
+      "destination": "wwwroot/lib/favico.js/",
+      "files": [
+        "favico-0.3.10.min.js"
+      ]
+    },
+    {
       "library": "tinymce@5.10.2",
       "destination": "wwwroot/lib/tinymce/",
       "files": [
