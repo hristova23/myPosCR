@@ -10,6 +10,8 @@
         [Required]
         public int Credits { get; set; }
 
+        [Phone]
+        [DataType(DataType.PhoneNumber)]
         public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
 
         public ICollection<Transaction> SendedTransactions { get; set; } = new List<Transaction>();

@@ -9,8 +9,7 @@
         [Required]
         public int Amount { get; set; }
 
-        [StringLength(1000)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
         
         public string SenderId { get; set; }
         public ApplicationUser Sender { get; set; }
