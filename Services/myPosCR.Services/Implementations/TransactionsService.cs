@@ -20,17 +20,15 @@ namespace myPosCR.Services.Implementations
 
         public async Task<int> CreateAsync(TransactionListingServiceModel input)
         {
-            var recieverPhone = input.RecieverPhone;
-
-            var sender = this.db.Users.Where(u=>u.UserName == input.SenderUsername).FirstOrDefault();
-            var reciever = this.db.Users.Where(u => u.PhoneNumber == recieverPhone).FirstOrDefault();
+            var sender = this.db.Users.Where(u=> u.Email == input.SenderEmail).FirstOrDefault();
+            var reciever = this.db.Users.Where(u => u.PhoneNumber == input.RecieverPhoneNumber).FirstOrDefault();
 
             var transaction = new Transaction
             {
                 SenderId = sender.Id,
-                Reciever = reciever,
+                RecieverId = reciever.Id,
                 Amount = input.Amount,
-                Message = input.Message, //may be null
+                Message = input.SanitizedMessage, //may be null
                 Date = DateTime.UtcNow
             };
 
@@ -43,7 +41,7 @@ namespace myPosCR.Services.Implementations
             return transaction.TransactionId;
         }
 
-        public NewTransactionServiceListingModel GetById(int id)
+        public TransactionListingServiceModel GetById(int id)
         {
             var transaction = this.db.Transactions
                 .Where(t => t.TransactionId == id)
@@ -52,7 +50,7 @@ namespace myPosCR.Services.Implementations
             var sender = this.db.Users.Where(u => u.Id == transaction.SenderId).FirstOrDefault();
             var reciever = this.db.Users.Where(u => u.Id == transaction.RecieverId).FirstOrDefault();
 
-            return new NewTransactionServiceListingModel
+            return new TransactionListingServiceModel
             {
                 TransactionId = transaction.TransactionId,
                 SenderEmail = sender.Email,

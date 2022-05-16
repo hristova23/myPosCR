@@ -1,4 +1,5 @@
 ﻿using myPosCR.Services.Models;
+using MyPosCR.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace myPosCR.Services
     public interface ITransactionsService
     {
         Task<int> CreateAsync(TransactionListingServiceModel transaction);
-        NewTransactionServiceListingModel GetById(int id);
+        TransactionListingServiceModel GetById(int id);
     }
 }

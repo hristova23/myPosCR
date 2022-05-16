@@ -6,6 +6,7 @@ using myPosCR.Services.Implementations;
 using myPosCR.Services.Models;
 using MyPosCR.Data;
 using MyPosCR.Web.Models.Transactions;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace MyPosCR.Web.Controllers
 {
@@ -13,11 +14,13 @@ namespace MyPosCR.Web.Controllers
     public class TransactionsController : Controller
     {
         private readonly ITransactionsService TransactionsService;
+        private readonly IApplicationUserService ApplicationUserService;
         private readonly ApplicationDbContext db;
 
-        public TransactionsController(ITransactionsService sendService, ApplicationDbContext db)
+        public TransactionsController(ITransactionsService transactionsService, IApplicationUserService applicationUserService, ApplicationDbContext db)
         {
-            this.TransactionsService = sendService;
+            this.TransactionsService = transactionsService;
+            this.ApplicationUserService = applicationUserService;
             this.db = db;
         }
 
@@ -64,20 +67,32 @@ namespace MyPosCR.Web.Controllers
         public async Task<IActionResult> Create(TransactionListingServiceModel input)
         {
             input.Date = DateTime.UtcNow;
-            input.SenderUsername = HttpContext.User.Identity.Name;
+            input.SenderEmail = HttpContext.User.Identity.Name;
+
+            var sender = this.ApplicationUserService.GetByEmail(input.SenderEmail);
+
+            ModelState.Remove("SenderEmail");
+            ModelState.Remove("RecieverEmail");
+            ModelState.Remove("SenderPhoneNumber");
 
             if (ModelState.IsValid)
             {
-                int transactionId = await this.TransactionsService.CreateAsync(new TransactionListingServiceModel
+                try
                 {
-                    SenderUsername = input.SenderUsername,
-                    RecieverPhone = input.RecieverPhone,
-                    Message = input.Message,
-                    Amount = input.Amount,
-                    Date = input.Date
-                });
+                    if (sender.PhoneNumber == input.RecieverPhoneNumber)
+                    {
+                        throw new Exception("You cannot make transactions to your account.");
+                    }
+                    int transactionId = await this.TransactionsService.CreateAsync(input);
 
-                return this.RedirectToAction(nameof(this.Details), new { id = transactionId });
+                    return this.RedirectToAction(nameof(this.Details), new { id = transactionId });
+                }
+                catch (Exception err)
+                {
+                    //return view and display err.Message
+                    return View(input);
+                    throw;
+                }
             }
             else
             {
