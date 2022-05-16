@@ -32,15 +32,32 @@ namespace MyPosCR.Web.Controllers
         public IActionResult Index()
         {
             var viewModel = new IndexViewModel();
-            var users = this.db.Transactions.Where(t=>t.Sender.Email == User.Identity.Name || t.Reciever.Email == User.Identity.Name).Select(t => new IndexTransactionViewModel
+            var users = new List<IndexTransactionViewModel>();
+
+            if (this.User.IsInRole("Administrator"))
             {
-                TransactionId = t.TransactionId,
-                Sender = t.Sender,
-                Reciever = t.Reciever,
-                Amount = t.Amount,
-                Message = t.Message,
-                Date = t.Date
-            }).ToList();
+                users = this.db.Transactions.Select(t => new IndexTransactionViewModel
+                {
+                    TransactionId = t.TransactionId,
+                    Sender = t.Sender,
+                    Reciever = t.Reciever,
+                    Amount = t.Amount,
+                    Message = t.Message,
+                    Date = t.Date
+                }).ToList();
+            }
+            else
+            {
+                users = this.db.Transactions.Where(t => t.Sender.Email == User.Identity.Name || t.Reciever.Email == User.Identity.Name).Select(t => new IndexTransactionViewModel
+                {
+                    TransactionId = t.TransactionId,
+                    Sender = t.Sender,
+                    Reciever = t.Reciever,
+                    Amount = t.Amount,
+                    Message = t.Message,
+                    Date = t.Date
+                }).ToList();
+            }
             viewModel.Transactions = users;
 
             return View(viewModel);
