@@ -27,7 +27,7 @@ namespace myPosCR.Services.Models
         public string? Message { get; set; }
         public string SanitizedMessage => new HtmlSanitizer().Sanitize(this.Message);
 
-        [Range(1, 1000, ErrorMessage = "Maximum transaction limit is 1000!")]
+        [Range(1, 1000, ErrorMessage = "Please enter a number between 0 and 1000.")]
         [Required(ErrorMessage = "Please enter a valid number.")]
         [DataType(DataType.Currency)]
         public int Amount { get; set; }

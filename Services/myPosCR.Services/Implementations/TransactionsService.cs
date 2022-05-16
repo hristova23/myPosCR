@@ -35,6 +35,7 @@ namespace myPosCR.Services.Implementations
             await this.db.Transactions.AddAsync(transaction);
             //Exeption Handling?!!
             reciever.Credits += transaction.Amount;
+            sender.Credits -= transaction.Amount;
             //
             await this.db.SaveChangesAsync();
 

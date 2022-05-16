@@ -83,6 +83,10 @@ namespace MyPosCR.Web.Controllers
                     {
                         throw new Exception("You cannot make transactions to your account.");
                     }
+                    if (sender.Credits < input.Amount)
+                    {
+                        throw new Exception("You do not have enough credits.");
+                    }
                     int transactionId = await this.TransactionsService.CreateAsync(input);
 
                     return this.RedirectToAction(nameof(this.Details), new { id = transactionId });
