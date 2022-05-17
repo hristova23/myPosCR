@@ -53,6 +53,11 @@
         "plugins/searchreplace/plugin.min.js",
         "plugins/lists/plugin.min.js"
       ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "morris.js@0.5.0",
+      "destination": "wwwroot/lib/morris.js/"
     }
   ]
 }

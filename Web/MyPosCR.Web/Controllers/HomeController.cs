@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using myPosCR.Services;
+using MyPosCR.Data;
 using MyPosCR.Data.Models;
 using MyPosCR.Web.Models;
+using MyPosCR.Web.Models.Home;
 using System.Diagnostics;
 
 namespace MyPosCR.Web.Controllers
@@ -13,17 +16,35 @@ namespace MyPosCR.Web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly RoleManager<IdentityRole> _identityRole;
 
-        public HomeController(RoleManager<IdentityRole> _identityRole, UserManager<ApplicationUser> _userManager, ILogger<HomeController> logger)
+        private readonly ITransactionsService transactionsService;
+        private readonly ApplicationDbContext db;
+
+        public HomeController(ApplicationDbContext db, RoleManager<IdentityRole> _identityRole, ITransactionsService transactionsService, UserManager<ApplicationUser> _userManager, ILogger<HomeController> logger)
         {
             this._identityRole = _identityRole;
             this._userManager = _userManager;
             this._logger = logger;
+            this.db = db;
+
+
+            this.transactionsService = transactionsService;
         }
 
         public IActionResult Index()
         {
             ViewBag.userId = _userManager.GetUserId(HttpContext.User);
-            return View();
+            string currentUserId = ViewBag.userId;
+
+            var transactions = this.db.Transactions.Where(t=>t.SenderId == currentUserId || t.RecieverId == currentUserId).Select(t => new IndexTransactionViewModel
+            {
+                Amount = t.Amount,
+                Date = t.Date
+            }).ToList();
+
+            var viewModel = new IndexViewModel();
+            viewModel.Transactions = transactions;
+
+            return View(viewModel);
         }
 
         //[Authorize ]
@@ -39,12 +60,6 @@ namespace MyPosCR.Web.Controllers
 
         //    return this.Json(result);
         //}
-
-        [Authorize]
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

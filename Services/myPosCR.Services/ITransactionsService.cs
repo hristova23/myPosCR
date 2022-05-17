@@ -12,5 +12,6 @@ namespace myPosCR.Services
     {
         Task<int> CreateAsync(TransactionListingServiceModel transaction);
         TransactionListingServiceModel GetById(int id);
+        List<TransactionListingServiceModel> GetAllTransactionsByUserId(string id);
     }
 }

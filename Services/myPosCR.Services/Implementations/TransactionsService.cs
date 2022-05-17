@@ -63,5 +63,19 @@ namespace myPosCR.Services.Implementations
                 Date = transaction.Date
             };
         }
+
+        public List<TransactionListingServiceModel> GetAllTransactionsByUserId(string id)
+        {
+            return this.db.Transactions
+                .Where(t => t.SenderId == id || t.RecieverId == id)
+                .Select(t => new TransactionListingServiceModel
+                {
+                    TransactionId = t.TransactionId,
+                    Amount = t.Amount,
+                    Message = t.Message,
+                    Date = t.Date
+                })
+                .ToList();
+        }
     }
 }
