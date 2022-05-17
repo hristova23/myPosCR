@@ -6,9 +6,8 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Keep track of your <a href="/Transactions">transaction history</a>.</p>
 </div>
-
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -16,35 +15,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
-<div id="transactionschart" style="height: 250px;"></div>
+<div id="transactionschart" style="height: 350px;"></div>
 
 <script>
-    var colors = ['#8f1100', '#278f01']; //[0 - red], [1 - green]
-
-    new Morris.Bar({
-      element: 'transactionschart',
-      data: [{
-          Date: "16.05.2022",
-          Amount: 120
-      },
-      {
-          Date: "18.05.2022",
-          Amount: 100
-      },
-      {
-          Date: "23.05.2022",
-          Amount: 50
-      },
-      ],
-      xkey: 'Date',
-      ykeys: ['Amount'],
-      labels: ['Amount'],
-      barColors: function(){
-          //if...
-          return colors[1];
-      },
-      resize: true
-    });
+    Morris.Donut({
+  element: 'transactionschart',
+  data: [
+    {
+        label: "Outgoing Transactions", 
+        value: @Model.IncomingTransactionsCount
+    },
+    {
+        label: "Incoming Transactions",
+        value: @Model.OutgoingTransactionsCount
+    }
+  ],
+  colors: ["#87040d", "#009122"],
+  labelColor:"#9CC4E4",
+  resize: true
+});
 
 </script>
     

@@ -1,12 +1,11 @@
 ﻿using myPosCR.Services.Models;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace MyPosCR.Web.Models.Home
 {
     public class IndexViewModel
     {
-        public List<IndexTransactionViewModel> Transactions { get; set; }
-
-        public string SerializzeData => JsonConvert.SerializeObject(Transactions);
+        public int IncomingTransactionsCount { get; set; }
+        public int OutgoingTransactionsCount { get; set; }
     }
 }

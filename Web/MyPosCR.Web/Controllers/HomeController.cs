@@ -7,6 +7,7 @@ using MyPosCR.Data.Models;
 using MyPosCR.Web.Models;
 using MyPosCR.Web.Models.Home;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace MyPosCR.Web.Controllers
 {
@@ -35,14 +36,12 @@ namespace MyPosCR.Web.Controllers
             ViewBag.userId = _userManager.GetUserId(HttpContext.User);
             string currentUserId = ViewBag.userId;
 
-            var transactions = this.db.Transactions.Where(t=>t.SenderId == currentUserId || t.RecieverId == currentUserId).Select(t => new IndexTransactionViewModel
-            {
-                Amount = t.Amount,
-                Date = t.Date
-            }).ToList();
+            var incomingTransactions = this.db.Transactions.Where(t=>t.RecieverId == currentUserId).ToList();
+            var outgoingTransactions = this.db.Transactions.Where(t => t.SenderId == currentUserId).ToList();
 
             var viewModel = new IndexViewModel();
-            viewModel.Transactions = transactions;
+            viewModel.IncomingTransactionsCount = incomingTransactions.Count;
+            viewModel.OutgoingTransactionsCount = outgoingTransactions.Count;
 
             return View(viewModel);
         }
