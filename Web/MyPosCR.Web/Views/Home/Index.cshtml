@@ -5,8 +5,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Keep track of your <a href="/Transactions">transaction history</a>.</p>
+    <h1 class="display-4">myPosCR System</h1>
 </div>
 
 
@@ -15,25 +14,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
-<div id="transactionschart" style="height: 350px;"></div>
+
+
+<div class="row pt-5">
+    <div class="col-md-6 pl-5">
+        <p style="font-size:19px">&#160;Welcome to myPosCR! We offer a peer-to-peer digital currency exchange where you can send and recieve credits, keep track of your transactions and current credit balance, and manage your account.</p>
+        <p style="font-size:19px">To start, please login(or register) from here. Once you register in our platform, you will automatically get 100 credits as a wellcome bonus. In order to start using your credits, please click on the &ldquo;make a transaction&rdquo; button in the transaction page and fill the required fields.</p>
+        <p style="font-size:19px">Once you've logged in, you'll be able to manage your account settings, view incoming and outgoing transactions and adjust your password if needed.</p>
+        <p style="font-size:19px">For any further questions please contact us at victoriya.hristova04@gmail.com</p>
+    </div>
+    <div class="col-md-6" id="transactionschart" style="height: 350px;"></div>
+</div>
 
 <script>
-    Morris.Donut({
-  element: 'transactionschart',
-  data: [
-    {
-        label: "Outgoing Transactions", 
-        value: @Model.IncomingTransactionsCount
-    },
-    {
-        label: "Incoming Transactions",
-        value: @Model.OutgoingTransactionsCount
-    }
-  ],
-  colors: ["#87040d", "#009122"],
-  labelColor:"#9CC4E4",
-  resize: true
-});
-
+      Morris.Donut({
+          element: 'transactionschart',
+          data: [
+            {
+                label: "Outgoing Transactions", 
+                value: @Model.IncomingTransactionsCount
+            },
+            {
+                label: "Incoming Transactions",
+                value: @Model.OutgoingTransactionsCount
+            }
+          ],
+          colors: ["#87040d", "#009122"],
+          labelColor:"#9CC4E4",
+          resize: true
+      });
 </script>
     
