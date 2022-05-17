@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using myPosCR.Services;
 using MyPosCR.Data;
@@ -7,7 +6,6 @@ using MyPosCR.Data.Models;
 using MyPosCR.Web.Models;
 using MyPosCR.Web.Models.Home;
 using System.Diagnostics;
-using System.Text.Json;
 
 namespace MyPosCR.Web.Controllers
 {
@@ -36,7 +34,7 @@ namespace MyPosCR.Web.Controllers
             ViewBag.userId = _userManager.GetUserId(HttpContext.User);
             string currentUserId = ViewBag.userId;
 
-            var incomingTransactions = this.db.Transactions.Where(t=>t.RecieverId == currentUserId).ToList();
+            var incomingTransactions = this.db.Transactions.Where(t => t.RecieverId == currentUserId).ToList();
             var outgoingTransactions = this.db.Transactions.Where(t => t.SenderId == currentUserId).ToList();
 
             var viewModel = new IndexViewModel();

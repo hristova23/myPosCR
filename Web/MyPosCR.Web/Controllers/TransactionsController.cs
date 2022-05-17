@@ -1,12 +1,9 @@
-﻿using MyPosCR.Data.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using myPosCR.Services;
-using myPosCR.Services.Implementations;
 using myPosCR.Services.Models;
 using MyPosCR.Data;
 using MyPosCR.Web.Models.Transactions;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace MyPosCR.Web.Controllers
 {

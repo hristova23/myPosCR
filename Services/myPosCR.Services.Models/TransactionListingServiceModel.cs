@@ -1,11 +1,5 @@
 ﻿using Ganss.XSS;
-using MyPosCR.Data.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace myPosCR.Services.Models
 {
@@ -18,7 +12,7 @@ namespace myPosCR.Services.Models
         public string SenderPhoneNumber { get; set; }
 
         public string RecieverEmail { get; set; }
-        
+
         [Phone]
         [Required(ErrorMessage = "Phone Number is required.")]
         [Display(Name = "Phone Number")]

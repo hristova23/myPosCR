@@ -1,7 +1,4 @@
-﻿using myPosCR.Services.Models;
-using System.Text.Json;
-
-namespace MyPosCR.Web.Models.Home
+﻿namespace MyPosCR.Web.Models.Home
 {
     public class IndexViewModel
     {

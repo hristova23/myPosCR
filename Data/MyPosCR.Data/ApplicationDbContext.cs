@@ -1,12 +1,8 @@
 ﻿namespace MyPosCR.Data
 {
-    using MyPosCR.Data.Models;
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using MyPosCR.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
