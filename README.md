@@ -57,6 +57,7 @@ click on the “make a transaction” button in the transaction page and fill th
 
 - [x] Add TinyMCE text editor
 - [x] Deploy to SmarterASP.NET
+- [ ] Style default asp.net core identity pages
 - [ ] Deploy to Azure
 - [ ] Configure https
 - [ ] Add Tests
